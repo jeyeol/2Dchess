@@ -16,7 +16,11 @@ GameEngine::~GameEngine()
 	SDL_DestroyRenderer(m_Rend); SDL_DestroyWindow(m_Window);
 }
 
-
+void GameEngine::Engine()
+{
+	RenderTexture();
+	Update();
+}
 void GameEngine::InitWindowandRenderer()
 {
 	if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
@@ -91,10 +95,16 @@ void GameEngine::UnitVectorsInit()
 }
 
 void GameEngine::CreateSurfaceandTexture()
-{
-	
+{	
 	//create board texture from surface
 	t_board = SDL_CreateTextureFromSurface(m_Rend, tex_.GetboardSurface());
 	t_unit = SDL_CreateTextureFromSurface(m_Rend, tex_.GetUnitSurface());
 }
+//update piece information & cover the movement logic
+void GameEngine::Update()
+{
+	Input_.MouseInput();
+	wPawn[0].back().SetX(Input_.xTarget()); wPawn[0].back().SetY(Input_.yTarget());//wPwan1
+	std::cout << Input_.xTarget() << "   " << Input_.yTarget() << std::endl;
 
+}

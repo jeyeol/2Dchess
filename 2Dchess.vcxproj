@@ -163,15 +163,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\header\GameLogic.h" />
     <ClInclude Include="src\header\Board.h" />
     <ClInclude Include="src\header\GameEngine.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="src\header\InputProcessing.h" />
     <ClInclude Include="src\header\Unit.h" />
     <ClInclude Include="src\header\Texture.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\body\GameLogic.cpp" />
     <ClCompile Include="src\body\Board.cpp" />
     <ClCompile Include="src\body\GameEngine.cpp" />
+    <ClCompile Include="src\body\InputProcessing.cpp" />
     <ClCompile Include="src\body\main.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

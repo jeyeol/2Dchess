@@ -1,6 +1,5 @@
 #pragma once
 //unit class uses for set and update coordinate of pieces
-
 class Unit {
 public:
 	Unit() {};
@@ -9,7 +8,6 @@ public:
 	inline int SetY(int y) { y_ = y; };
 	inline int GetX() { return x_; };
 	inline int GetY() { return y_; };
-	
 private:
 	int x_, y_;
 };

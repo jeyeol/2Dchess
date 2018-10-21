@@ -2,6 +2,7 @@
 #include "src/header/Texture.h"
 #include "src/header/Board.h"
 #include "src/header/Unit.h"
+#include "src/header/InputProcessing.h"
 #include <vector>
 
 class GameEngine
@@ -9,13 +10,16 @@ class GameEngine
 public:
 	GameEngine();
 	~GameEngine();
+	void Engine();
+	void Update();
 	void InitWindowandRenderer();
 	void RenderTexture();
 	void CreateSurfaceandTexture();
 	void UnitVectorsInit();
-	
+		
 private:
 	Texture tex_;
+	InputProcessing Input_;
 	Board Board_;
 	SDL_Renderer* m_Rend;
 	SDL_Window* m_Window;
