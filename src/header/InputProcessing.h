@@ -4,21 +4,24 @@
 #include "src/header/InputProcessing.h"
 #include "src/header/Unit.h"
 #include <vector>
+#include "src/header/Board.h"
+#include <iostream>
 
 class InputProcessing
 {
 public:
 	InputProcessing();
 	~InputProcessing();
-	void MouseInput();
-	int xTarget() { return xTarget_; };
-	int yTarget() { return yTarget_; };
+	void MouseInput(std::vector<Unit>Unit_);
+	bool isSelected= false;
+	bool intheBoard();
+	
 private:
 	SDL_Event Event;
 	int xbefore_;
 	int ybefore_;
-	int xTarget_;
-	int yTarget_;
+	
 	Unit Unit_;
+	Board Board_;
 };
 

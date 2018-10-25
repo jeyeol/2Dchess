@@ -1,27 +1,2 @@
 ﻿  InputProcessing.cpp
-d:\c++ projects\2dchess\2dchess\src\body\inputprocessing.cpp(4): error C2653: 'InputProcessing': is not a class or namespace name
-d:\c++ projects\2dchess\2dchess\src\body\inputprocessing.cpp(5): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-d:\c++ projects\2dchess\2dchess\src\body\inputprocessing.cpp(6): error C2065: 'xbefore_': undeclared identifier
-d:\c++ projects\2dchess\2dchess\src\body\inputprocessing.cpp(6): error C2065: 'Unit_': undeclared identifier
-d:\c++ projects\2dchess\2dchess\src\body\inputprocessing.cpp(7): error C2065: 'ybefore_': undeclared identifier
-d:\c++ projects\2dchess\2dchess\src\body\inputprocessing.cpp(7): error C2065: 'Unit_': undeclared identifier
-d:\c++ projects\2dchess\2dchess\src\body\inputprocessing.cpp(9): warning C4508: 'InputProcessing': function should return a value; 'void' return type assumed
-d:\c++ projects\2dchess\2dchess\src\body\inputprocessing.cpp(12): error C2523: 'InputProcessing::~InputProcessing': destructor tag mismatch
-d:\c++ projects\2dchess\2dchess\src\body\inputprocessing.cpp(12): error C2510: 'InputProcessing': left of '::' must be a class/struct/union
-d:\c++ projects\2dchess\2dchess\src\body\inputprocessing.cpp(13): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-d:\c++ projects\2dchess\2dchess\src\body\inputprocessing.cpp(13): error C2084: function 'int InputProcessing(void)' already has a body
-  d:\c++ projects\2dchess\2dchess\src\body\inputprocessing.cpp(4): note: see previous definition of 'InputProcessing'
-d:\c++ projects\2dchess\2dchess\src\body\inputprocessing.cpp(17): error C2510: 'InputProcessing': left of '::' must be a class/struct/union
-d:\c++ projects\2dchess\2dchess\src\body\inputprocessing.cpp(19): error C2065: 'Event': undeclared identifier
-d:\c++ projects\2dchess\2dchess\src\body\inputprocessing.cpp(19): error C3861: 'SDL_PollEvent': identifier not found
-d:\c++ projects\2dchess\2dchess\src\body\inputprocessing.cpp(21): error C2065: 'Event': undeclared identifier
-d:\c++ projects\2dchess\2dchess\src\body\inputprocessing.cpp(23): error C2065: 'SDL_MOUSEBUTTONDOWN': undeclared identifier
-d:\c++ projects\2dchess\2dchess\src\body\inputprocessing.cpp(23): error C2131: expression did not evaluate to a constant
-  d:\c++ projects\2dchess\2dchess\src\body\inputprocessing.cpp(23): note: a non-constant (sub-)expression was encountered
-d:\c++ projects\2dchess\2dchess\src\body\inputprocessing.cpp(24): error C2065: 'xTarget_': undeclared identifier
-d:\c++ projects\2dchess\2dchess\src\body\inputprocessing.cpp(24): error C2065: 'Event': undeclared identifier
-d:\c++ projects\2dchess\2dchess\src\body\inputprocessing.cpp(25): error C2065: 'yTarget_': undeclared identifier
-d:\c++ projects\2dchess\2dchess\src\body\inputprocessing.cpp(25): error C2065: 'Event': undeclared identifier
-d:\c++ projects\2dchess\2dchess\src\body\inputprocessing.cpp(26): error C2065: 'SDL_MOUSEBUTTONUP': undeclared identifier
-d:\c++ projects\2dchess\2dchess\src\body\inputprocessing.cpp(26): error C2131: expression did not evaluate to a constant
-  d:\c++ projects\2dchess\2dchess\src\body\inputprocessing.cpp(26): note: a non-constant (sub-)expression was encountered
+  2Dchess.vcxproj -> D:\c++ projects\2Dchess\Debug\2Dchess.exe

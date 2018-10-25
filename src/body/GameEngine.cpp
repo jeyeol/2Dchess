@@ -19,7 +19,7 @@ GameEngine::~GameEngine()
 void GameEngine::Engine()
 {
 	RenderTexture();
-	Update();
+	PositionUpdate();
 }
 void GameEngine::InitWindowandRenderer()
 {
@@ -48,7 +48,8 @@ void GameEngine::RenderTexture()
 	SDL_RenderCopy(m_Rend, t_board, NULL, &tex_.ImageRect(0, 0, 504, 504));
 	//rendering of units
 	//white units
-	for (int i = 0; i < 8; i++)
+	SDL_RenderCopy(m_Rend, t_unit, &tex_.ImageRect(288, 58, 56, 56), &tex_.ImageRect(wPawn[0].back().TargetX_, wPawn[0].back().TargetY_, 56, 56));
+	for (int i = 1; i < 8; i++)
 		SDL_RenderCopy(m_Rend, t_unit, &tex_.ImageRect(288, 58, 56, 56), &tex_.ImageRect(wPawn[i].back().GetX(), wPawn[i].back().GetY(), 56, 56));
 	for (int i = 0; i < 2; i++)
 	{
@@ -101,10 +102,8 @@ void GameEngine::CreateSurfaceandTexture()
 	t_unit = SDL_CreateTextureFromSurface(m_Rend, tex_.GetUnitSurface());
 }
 //update piece information & cover the movement logic
-void GameEngine::Update()
+void GameEngine::PositionUpdate()
 {
-	Input_.MouseInput();
-	wPawn[0].back().SetX(Input_.xTarget()); wPawn[0].back().SetY(Input_.yTarget());//wPwan1
-	std::cout << Input_.xTarget() << "   " << Input_.yTarget() << std::endl;
+	Input_.MouseInput(wPawn[0]);
 
 }

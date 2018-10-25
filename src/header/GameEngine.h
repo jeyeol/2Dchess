@@ -11,7 +11,7 @@ public:
 	GameEngine();
 	~GameEngine();
 	void Engine();
-	void Update();
+	void PositionUpdate();
 	void InitWindowandRenderer();
 	void RenderTexture();
 	void CreateSurfaceandTexture();
