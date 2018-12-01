@@ -48,8 +48,10 @@ void GameEngine::RenderTexture()
 	SDL_RenderCopy(m_Rend, t_board, NULL, &tex_.ImageRect(0, 0, 504, 504));
 	//rendering of units
 	//white units
-	SDL_RenderCopy(m_Rend, t_unit, &tex_.ImageRect(288, 58, 56, 56), &tex_.ImageRect(wPawn[0].back().TargetX_, wPawn[0].back().TargetY_, 56, 56));
-	for (int i = 1; i < 8; i++)
+	//SDL_RenderCopy(m_Rend, t_unit, &tex_.ImageRect(288, 58, 56, 56), &tex_.ImageRect(wPawn[0].back().GetX(), wPawn[0].back().GetY(), 56, 56));
+	//SDL_RenderCopy(m_Rend, t_unit, &tex_.ImageRect(288, 58, 56, 56), &tex_.ImageRect(Input_.NewPosX(wPawn[1]), Input_.NewPosY(wPawn[1]), 56, 56));
+
+	for (int i = 0; i < 8; i++)
 		SDL_RenderCopy(m_Rend, t_unit, &tex_.ImageRect(288, 58, 56, 56), &tex_.ImageRect(wPawn[i].back().GetX(), wPawn[i].back().GetY(), 56, 56));
 	for (int i = 0; i < 2; i++)
 	{
@@ -104,6 +106,10 @@ void GameEngine::CreateSurfaceandTexture()
 //update piece information & cover the movement logic
 void GameEngine::PositionUpdate()
 {
+	Input_.MouseInput(wPawn[1]);
 	Input_.MouseInput(wPawn[0]);
-
+	
+	//Input_.MouseInput(wRook[0]);
+	
+	
 }
