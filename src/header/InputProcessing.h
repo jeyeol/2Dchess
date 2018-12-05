@@ -14,11 +14,10 @@ public:
 	InputProcessing();
 	~InputProcessing();
 	
-	void MouseInput(std::vector<Unit>&Unit_);
+	void MouseInput(std::vector<Unit> &Unit_, int piece);
 
 	bool isSelected = false;
-	//inline int NewPosX(std::vector<Unit>&Unit_) { return targetX; };
-	//inline int NewPosY(std::vector<Unit>&Unit_) { return targetY; };
+	
 private:
 	bool JustStarted;
 	SDL_Event Event;
@@ -27,5 +26,6 @@ private:
 	int targetX;
 	int targetY;
 	Board Board_;
+	
 
 };

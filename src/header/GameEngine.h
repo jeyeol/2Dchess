@@ -16,32 +16,23 @@ public:
 	void RenderTexture();
 	void CreateSurfaceandTexture();
 	void UnitVectorsInit();
+
 		
-private:
+private: //class objects
 	Texture tex_;
 	InputProcessing Input_;
 	Board Board_;
-	SDL_Renderer* m_Rend;
-	SDL_Window* m_Window;
-	//set of Unit class variables for each units
-private:
-	//unit vectors for white pieces...
-	std::vector<Unit>wPawn[8];
-	std::vector<Unit>wBishop[2];
-	std::vector<Unit>wRook[2];
-	std::vector<Unit>wKnight[2];
-	std::vector<Unit>wKing;
-	std::vector<Unit>wQueen;
-	//unit vectors for black pieces...
-	std::vector<Unit>bPawn[8];
-	std::vector<Unit>bBishop[2];
-	std::vector<Unit>bRook[2];
-	std::vector<Unit>bKnight[2];
-	std::vector<Unit>bKing;
-	std::vector<Unit>bQueen;
-private:
-	SDL_Texture * t_board;
-	SDL_Texture* t_unit;
+	Unit Unit_;
+
+private: //sdl objects
+	SDL_Renderer* m_Rend; //sdl renderer
+	SDL_Window* m_Window; //sdl window
+	SDL_Texture * t_board; //texture for board
+	SDL_Texture* t_unit; // textures for units
+
+private: //std:: vectors
+	std::vector<Unit> wUnits; //position of white pieces
+	std::vector<Unit> bUnits; //position of black pieces
 	
 };
 
