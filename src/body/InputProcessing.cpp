@@ -2,8 +2,7 @@
 #include "src/header/InputProcessing.h"
 InputProcessing::InputProcessing()
 {
-	JustStarted = true;
-	isSelected = false;
+	
 }
 
 
@@ -14,6 +13,7 @@ InputProcessing::~InputProcessing()
 
 void InputProcessing::MouseInput(std::vector<Unit>& Unit_, int piece)
 {
+	
 	
 		if (isSelected && !JustStarted)
 		{
@@ -32,14 +32,18 @@ void InputProcessing::MouseInput(std::vector<Unit>& Unit_, int piece)
 			case SDL_MOUSEBUTTONDOWN:
 				
 				if (Event.button.button == SDL_BUTTON_LEFT && Board_.Xcood(Event.motion.x)== Board_.Xcood(Unit_[piece].GetX())
-					&& Board_.Ycood(Board_.Ycood(Event.motion.y))== Unit_[piece].GetY())
+					&& Board_.Ycood(Event.motion.y)== Board_.Ycood(Unit_[piece].GetY()))
 				{
 						JustStarted = false;
 						isSelected = true;
 						std::cout << "position is right!";
 						break;
 				}
-				break;
+				else
+				{
+					isSelected = false;
+					break;
+				}
 			case SDL_MOUSEBUTTONUP:
 				if (Event.button.button == SDL_BUTTON_LEFT)
 				{
@@ -61,8 +65,7 @@ void InputProcessing::MouseInput(std::vector<Unit>& Unit_, int piece)
 					*/
 			default:
 			{
-				//Board_.Xcood(Unit_.back().GetX());
-				//beforeY = Board_.Ycood(Unit_.back().GetY());
+				
 			}
 
 			}

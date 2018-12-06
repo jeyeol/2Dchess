@@ -6,7 +6,7 @@ GameEngine::GameEngine()
 {
 	InitWindowandRenderer();
 	UnitVectorsInit();
-	CreateSurfaceandTexture();
+	CreateSurfaceandTexture();	
 }
 
 
@@ -19,7 +19,7 @@ GameEngine::~GameEngine()
 void GameEngine::Engine()
 {
 	RenderTexture();
-	PositionUpdate();
+	PositionUpdate();	
 }
 void GameEngine::InitWindowandRenderer()
 {
@@ -82,6 +82,13 @@ void GameEngine::CreateSurfaceandTexture()
 }
 //update piece information & cover the movement logic
 void GameEngine::PositionUpdate()
-{	for (int i=0; i<16; i++)
-	Input_.MouseInput(wUnits, i);
+{
+	for (int i = 0; i < 16; i++)
+	{
+		Input_.MouseInput(bUnits, i);
+		Input_.MouseInput(wUnits, i);
+		
+	}
+	
+	
 }

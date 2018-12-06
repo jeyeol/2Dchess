@@ -7,6 +7,7 @@
 #include "src/header/Board.h"
 #include <iostream>
 #include "dep/include/glm/glm/glm.hpp"
+#include "dep/include/glm/glm/glm.hpp"
 
 class InputProcessing
 {
@@ -15,11 +16,10 @@ public:
 	~InputProcessing();
 	
 	void MouseInput(std::vector<Unit> &Unit_, int piece);
-
-	bool isSelected = false;
 	
 private:
-	bool JustStarted;
+	bool isSelected = false;
+	bool JustStarted = true;
 	SDL_Event Event;
 	int beforeX;
 	int beforeY;
