@@ -83,12 +83,14 @@ void GameEngine::CreateSurfaceandTexture()
 //update piece information & cover the movement logic
 void GameEngine::PositionUpdate()
 {
-	for (int i = 0; i < 16; i++)
-	{
-		Input_.MouseInput(bUnits, i);
-		Input_.MouseInput(wUnits, i);
-		
-	}
+	std::vector<Unit> currentUnit;
+	currentUnit = wUnits;
+	if (currentUnit == wUnits && Input_.Turnchange) { currentUnit = bUnits; };
+	if (currentUnit == bUnits && Input_.Turnchange) { currentUnit = wUnits; };
 	
+	Input_.MouseInput(currentUnit); 
+	if (currentUnit==wUnits) { std::cout << "white turn :"; }
+	else { std::cout << "black turn :" << std::endl; }
 	
 }
+

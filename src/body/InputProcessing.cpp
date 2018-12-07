@@ -11,45 +11,29 @@ InputProcessing::~InputProcessing()
 
 }
 
-void InputProcessing::MouseInput(std::vector<Unit>& Unit_, int piece)
+void InputProcessing::MouseInput(std::vector<Unit>& Unit_)
 {
 	
-	
-		if (isSelected && !JustStarted)
-		{
-			Unit_[piece].SetX(Board_.GridX(Board_.Xcood(Event.motion.x)));
-			Unit_[piece].SetY(Board_.GridY(Board_.Ycood(Event.motion.y)));
-
-		}
-		
-		std::cout << Board_.Xcood(Event.motion.x) << Board_.Ycood(Event.motion.y) <<std::endl;
-		
+			
 		while (SDL_PollEvent(&Event))
 		{
 
 			switch (Event.type)
 			{
 			case SDL_MOUSEBUTTONDOWN:
-				
-				if (Event.button.button == SDL_BUTTON_LEFT && Board_.Xcood(Event.motion.x)== Board_.Xcood(Unit_[piece].GetX())
-					&& Board_.Ycood(Event.motion.y)== Board_.Ycood(Unit_[piece].GetY()))
+				if (Event.button.button != SDL_BUTTON_LEFT) break;
+				for (auto& piece : Unit_)
+				if (Board_.Xcood(Event.motion.x)== Board_.Xcood(piece.GetX())
+					&& Board_.Ycood(Event.motion.y)== Board_.Ycood(piece.GetY()))
 				{
-						JustStarted = false;
-						isSelected = true;
-						std::cout << "position is right!";
-						break;
+					Selected = &piece;
 				}
-				else
-				{
-					isSelected = false;
-					break;
-				}
+				break;
 			case SDL_MOUSEBUTTONUP:
 				if (Event.button.button == SDL_BUTTON_LEFT)
 				{
-					JustStarted = false;
-					isSelected = false;
-					std::cout << "Button Up" << std::endl;
+					Selected = nullptr;
+					
 				}
 				break;
 				/*case SDL_MOUSEMOTION:
@@ -65,10 +49,16 @@ void InputProcessing::MouseInput(std::vector<Unit>& Unit_, int piece)
 					*/
 			default:
 			{
-				
+				 
 			}
 
 			}
+		}
+		if (Selected !=nullptr)
+		{
+			Selected->SetX(Board_.GridX(Board_.Xcood(Event.motion.x)));
+			Selected->SetY(Board_.GridY(Board_.Ycood(Event.motion.y)));
+			Turnchange = true;
 		}
 }
 

@@ -15,11 +15,10 @@ public:
 	InputProcessing();
 	~InputProcessing();
 	
-	void MouseInput(std::vector<Unit> &Unit_, int piece);
-	
+	void MouseInput(std::vector<Unit> &Unit_);
+	bool Turnchange= false;
 private:
-	bool isSelected = false;
-	bool JustStarted = true;
+	Unit* Selected =nullptr;
 	SDL_Event Event;
 	int beforeX;
 	int beforeY;
@@ -27,5 +26,7 @@ private:
 	int targetY;
 	Board Board_;
 	
+private: //pointers
+
 
 };
