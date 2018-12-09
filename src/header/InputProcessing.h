@@ -14,7 +14,7 @@ class InputProcessing
 public:
 	InputProcessing();
 	~InputProcessing();
-	bool WhiteTurn;
+	bool WhiteTurn=true;
 	void MouseInput(std::vector<Unit> &Unit_);
 	
 private:

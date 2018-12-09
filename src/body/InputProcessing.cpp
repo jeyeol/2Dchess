@@ -37,9 +37,11 @@ void InputProcessing::MouseInput(std::vector<Unit>& Unit_)
 					//intergrate into unit class
 					Selected->oldX = beforeX;
 					Selected->oldY = beforeY;
-					if (Selected->WHITE) { CurrentPlayer = 'W'; };
-					if (Selected->BLACK) { CurrentPlayer = 'B'; };
-					break;
+					
+					if (Selected->Color_ == Unit::WHITE) { CurrentPlayer = 'W'; std::cout << "white units selected";
+					};
+					if (Selected->Color_ == Unit::BLACK) { CurrentPlayer = 'B'; std::cout << "black units selected"; };
+					
 				}
 				
 			}
@@ -51,8 +53,8 @@ void InputProcessing::MouseInput(std::vector<Unit>& Unit_)
 				Selected = nullptr;	
 				if (targetX != beforeX or targetY != beforeY)
 				{
-					if (CurrentPlayer == 'W') { WhiteTurn = false; }; break;
-					if (CurrentPlayer == 'B') { WhiteTurn = true; }; break;
+					if (CurrentPlayer == 'W' && WhiteTurn) {WhiteTurn = false;};
+					if (CurrentPlayer == 'B' && !WhiteTurn) {	WhiteTurn = true;};
 				}
 				break;
 			
