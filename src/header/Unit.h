@@ -18,6 +18,7 @@ public:
 	int oldY;
 	int newX;
 	int newY;
+	
 private:
 	int x_, y_;
 	

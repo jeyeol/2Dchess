@@ -16,7 +16,7 @@ public:
 	void RenderTexture();
 	void CreateSurfaceandTexture();
 	void UnitVectorsInit();
-	void InitUnitPointer();
+	
 	
 	
 private: //class objects
@@ -30,6 +30,7 @@ private: //sdl objects
 	SDL_Window* m_Window; //sdl window
 	SDL_Texture * t_board; //texture for board
 	SDL_Texture* t_unit; // textures for units
+	SDL_Texture* t_UItexture; //texture UI
 	
 private: //std:: vectors
 	std::vector<Unit> wUnits; //position of white pieces

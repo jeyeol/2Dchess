@@ -25,7 +25,7 @@ void GameEngine::InitWindowandRenderer()
 {
 	if (SDL_Init(SDL_INIT_EVERYTHING) == 0)	{ std::cout << "Subsystems Initialized..." << std::endl;}
 	//initialize window
-	m_Window = SDL_CreateWindow("2D Chess Game!", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 800, SDL_WINDOW_OPENGL);
+	m_Window = SDL_CreateWindow("2D Chess Game!", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 1000, SDL_WINDOW_OPENGL);
 	if (m_Window == nullptr){ std::cout << "window failed to initialized...." << std::endl;	}
 	//create renderer & render error code
 	m_Rend = SDL_CreateRenderer(m_Window, -1, SDL_RENDERER_ACCELERATED);
@@ -38,6 +38,9 @@ void GameEngine::RenderTexture()
 {
 	//rendering the board
 	SDL_RenderCopy(m_Rend, t_board, NULL, &tex_.ImageRect(0, 0, 504, 504));
+	//render turn UI
+	if (Input_.WhiteTurn)SDL_RenderCopy(m_Rend, t_UItexture, &tex_.ImageRect(0, 0, 350, 280), &tex_.ImageRect(0, 550, 75, 75));
+	if (!Input_.WhiteTurn)SDL_RenderCopy(m_Rend, t_UItexture, &tex_.ImageRect(280, 0, 350, 280), &tex_.ImageRect(0, 550, 75, 75));
 	//unit rendering
 	for (int i = 0; i < 16; i++)
 	{
@@ -79,6 +82,7 @@ void GameEngine::CreateSurfaceandTexture()
 	//create board texture from surface
 	t_board = SDL_CreateTextureFromSurface(m_Rend, tex_.GetboardSurface());
 	t_unit = SDL_CreateTextureFromSurface(m_Rend, tex_.GetUnitSurface());
+	t_UItexture = SDL_CreateTextureFromSurface(m_Rend, tex_.GetTurnUI());
 }
 //update piece information & cover the movement logic
 void GameEngine::PositionUpdate()

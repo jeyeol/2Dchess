@@ -38,8 +38,7 @@ void InputProcessing::MouseInput(std::vector<Unit>& Unit_)
 					Selected->oldX = beforeX;
 					Selected->oldY = beforeY;
 					
-					if (Selected->Color_ == Unit::WHITE) { CurrentPlayer = 'W'; std::cout << "white units selected";
-					};
+					if (Selected->Color_ == Unit::WHITE) { CurrentPlayer = 'W'; std::cout << "white units selected";};
 					if (Selected->Color_ == Unit::BLACK) { CurrentPlayer = 'B'; std::cout << "black units selected"; };
 					
 				}

@@ -23,9 +23,11 @@ void Texture::LoadImage()
 	//create surface
 	s_board = IMG_Load((path + "board.png").c_str());
 	s_unit = IMG_Load((path + "figures.png").c_str());
+	s_TurnUI = IMG_Load((path + "chessArt.jpg").c_str());
 	//print error message if textures fail to load
 	if (s_board == nullptr) { std::cout << "board texture files failed to load"; };
 	if (s_unit == nullptr) { std::cout << "unit texture file failed to load"; };
+	if (s_TurnUI == nullptr) { std::cout << "TurnUI file failed to load"; };
 }
 //imageRect method draw piece for units applied for both color
 SDL_Rect Texture::ImageRect(int x, int y, int h, int w)
