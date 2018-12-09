@@ -14,17 +14,23 @@ class InputProcessing
 public:
 	InputProcessing();
 	~InputProcessing();
-	
+	bool WhiteTurn;
 	void MouseInput(std::vector<Unit> &Unit_);
-	bool Turnchange= false;
+	
 private:
 	Unit* Selected =nullptr;
+	Unit* Position = nullptr;
 	SDL_Event Event;
 	int beforeX;
 	int beforeY;
 	int targetX;
 	int targetY;
 	Board Board_;
+	int dx;
+	int dy;
+	int counter = 1;
+	bool turnChange = false;
+	char CurrentPlayer = 'W';
 	
 private: //pointers
 

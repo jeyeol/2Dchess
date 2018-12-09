@@ -17,7 +17,8 @@ public:
 	void CreateSurfaceandTexture();
 	void UnitVectorsInit();
 	void InitUnitPointer();
-	bool WhiteTurn();
+	
+	
 private: //class objects
 	Texture tex_;
 	InputProcessing Input_;

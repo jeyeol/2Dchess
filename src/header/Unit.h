@@ -7,16 +7,19 @@ public:
 	enum PlayerColor {WHITE, BLACK};
 	enum UnitType {PAWN, ROOK, KING, QUEEN, BISHOP, KNIGHT};
 	Unit() {};
-	Unit(int x, int y, PlayerColor Color_ ,UnitType UnitType_) : x_(x), y_(y), TargetX_(x), TargetY_(y) {  };
+	Unit(int x, int y, PlayerColor Color_ ,UnitType UnitType_) : x_(x), y_(y), oldX(x), oldY(y), newX(x), newY(y){  };
 	inline int SetX(int x) { x_ = x; return x_; };
 	inline int SetY(int y) { y_ = y; return y_; };
 	inline int GetX() { return x_; };
 	inline int GetY() { return y_; };
-	int TargetX_;
-	int TargetY_;
 	UnitType UnitType_;
 	PlayerColor Color_;
+	int oldX;
+	int oldY;
+	int newX;
+	int newY;
 private:
 	int x_, y_;
+	
 };
 
