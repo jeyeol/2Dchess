@@ -1,2 +1,20 @@
-﻿  GameEngine.cpp
-  2Dchess.vcxproj -> D:\c++ projects\2Dchess\Debug\2Dchess.exe
+﻿  GameLogic.cpp
+d:\c++ projects\2dchess\2dchess\src\body\gamelogic.cpp(5): error C2653: 'GameLogic': is not a class or namespace name
+d:\c++ projects\2dchess\2dchess\src\body\gamelogic.cpp(5): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+d:\c++ projects\2dchess\2dchess\src\body\gamelogic.cpp(5): warning C4508: 'GameLogic': function should return a value; 'void' return type assumed
+d:\c++ projects\2dchess\2dchess\src\body\gamelogic.cpp(7): error C2523: 'GameLogic::~GameLogic': destructor tag mismatch
+d:\c++ projects\2dchess\2dchess\src\body\gamelogic.cpp(7): error C2510: 'GameLogic': left of '::' must be a class/struct/union
+d:\c++ projects\2dchess\2dchess\src\body\gamelogic.cpp(7): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+d:\c++ projects\2dchess\2dchess\src\body\gamelogic.cpp(7): error C2084: function 'int GameLogic(void)' already has a body
+  d:\c++ projects\2dchess\2dchess\src\body\gamelogic.cpp(5): note: see previous definition of 'GameLogic'
+d:\c++ projects\2dchess\2dchess\src\body\gamelogic.cpp(9): error C2510: 'GameLogic': left of '::' must be a class/struct/union
+d:\c++ projects\2dchess\2dchess\src\body\gamelogic.cpp(9): error C2039: 'vector': is not a member of 'std'
+  d:\c++ projects\2dchess\2dchess\predefined c++ types (compiler internal)(256): note: see declaration of 'std'
+d:\c++ projects\2dchess\2dchess\src\body\gamelogic.cpp(9): error C2065: 'vector': undeclared identifier
+d:\c++ projects\2dchess\2dchess\src\body\gamelogic.cpp(9): error C2065: 'Unit': undeclared identifier
+d:\c++ projects\2dchess\2dchess\src\body\gamelogic.cpp(9): error C2065: 'WUnit_': undeclared identifier
+d:\c++ projects\2dchess\2dchess\src\body\gamelogic.cpp(9): error C2448: 'WhiteMoveGood': function-style initializer appears to be a function definition
+  GameEngine.cpp
+  InputProcessing.cpp
+  main.cpp
+  Generating Code...

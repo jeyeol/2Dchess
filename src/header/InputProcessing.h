@@ -8,6 +8,7 @@
 #include <iostream>
 #include "dep/include/glm/glm/glm.hpp"
 #include "dep/include/glm/glm/glm.hpp"
+#include "GameLogic.h"
 
 class InputProcessing
 {
@@ -21,18 +22,19 @@ private:
 	Unit* Selected =nullptr;
 	Unit* Position = nullptr;
 	SDL_Event Event;
-	int beforeX;
-	int beforeY;
-	int targetX;
-	int targetY;
-	Board Board_;
-	int dx;
-	int dy;
-	int counter = 1;
-	bool turnChange = false;
-	char CurrentPlayer = 'W';
+        GameLogic Logic_;
+		Board Board_;
 	
-private: //pointers
-
-
+	
+private:
+        int beforeX;
+        int beforeY;
+        int targetX;
+        int targetY;
+        int dx;
+        int dy;
+        bool turnChange = false;
+        char CurrentPlayer = 'W';
+        bool InBoard_;
+        
 };

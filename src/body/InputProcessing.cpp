@@ -13,15 +13,29 @@ InputProcessing::~InputProcessing()
 
 void InputProcessing::MouseInput(std::vector<Unit>& Unit_)
 {
-
+  
 
 
 	while (SDL_PollEvent(&Event))
 	{
+    bool GoodMove_();
 
 		switch (Event.type)
 		{
-			
+            if (Event.motion.x >= 480) {
+                    Event.motion.x = 480;
+                  }
+            if (Event.motion.x < 28) {
+                    Event.motion.x = 28;
+                  }
+			if (Event.motion.y < 28)
+			{
+                    Event.motion.y = 28;
+			}
+                        if (Event.motion.y >= 480) {
+                          Event.motion.y = 480;
+						}
+             
 		case SDL_MOUSEBUTTONDOWN:
 			
 			{
@@ -31,6 +45,7 @@ void InputProcessing::MouseInput(std::vector<Unit>& Unit_)
 					&& Board_.Ycood(Event.motion.y) == Board_.Ycood(piece.GetY()))
 				{
 					Selected = &piece;
+                                               
 					//assign old position for piece
 					beforeX = Selected->GetX();
 					beforeY = Selected->GetY();
@@ -38,9 +53,9 @@ void InputProcessing::MouseInput(std::vector<Unit>& Unit_)
 					Selected->oldX = beforeX;
 					Selected->oldY = beforeY;
 					
-					if (Selected->Color_ == Unit::WHITE) { CurrentPlayer = 'W'; std::cout << "white units selected";};
+					if (Selected->Color_ == Unit::WHITE) { CurrentPlayer = 'W'; std::cout << "white units selected"; };
 					if (Selected->Color_ == Unit::BLACK) { CurrentPlayer = 'B'; std::cout << "black units selected"; };
-					
+                                        
 				}
 				
 			}
@@ -80,7 +95,7 @@ void InputProcessing::MouseInput(std::vector<Unit>& Unit_)
 		}
 	}
 	
-	if (Selected != nullptr)
+	if (Selected != nullptr )
 	{
 		//set new target positions for the piece
 		Selected->SetX(Board_.GridX(Board_.Xcood(Event.motion.x)));

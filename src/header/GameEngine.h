@@ -5,6 +5,7 @@
 #include "src/header/InputProcessing.h"
 #include <vector>
 
+
 class GameEngine
 {
 public:
@@ -23,7 +24,7 @@ private: //class objects
 	Texture tex_;
 	InputProcessing Input_;
 	Board Board_;
-	Unit Unit_;
+    Unit Unit_;
 	InputProcessing* WhiteTurn_;
 private: //sdl objects
 	SDL_Renderer* m_Rend; //sdl renderer
