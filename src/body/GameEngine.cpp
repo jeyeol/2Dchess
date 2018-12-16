@@ -87,7 +87,9 @@ void GameEngine::CreateSurfaceandTexture()
 //update piece information & cover the movement logic
 void GameEngine::PositionUpdate()
 {
-	if (Input_.WhiteTurn) { Input_.MouseInput(wUnits); /*std::cout << "turn white"; */};
+  if (Input_.WhiteTurn)  { 
+    Input_.MouseInput(wUnits); /*std::cout << "turn white"; */
+  };
 	if (!Input_.WhiteTurn) { Input_.MouseInput(bUnits); /*std::cout << "turn black"; */};
 };
 

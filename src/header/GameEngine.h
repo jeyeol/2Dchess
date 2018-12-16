@@ -26,7 +26,9 @@ private: //class objects
 	Board Board_;
     Unit Unit_;
 	InputProcessing* WhiteTurn_;
-private: //sdl objects
+    GameLogic Logic_;
+
+   private: //sdl objects
 	SDL_Renderer* m_Rend; //sdl renderer
 	SDL_Window* m_Window; //sdl window
 	SDL_Texture * t_board; //texture for board

@@ -36,5 +36,6 @@ private:
         bool turnChange = false;
         char CurrentPlayer = 'W';
         bool InBoard_;
+        bool GoodMove_=false;
         
 };

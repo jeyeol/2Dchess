@@ -1,4 +1,5 @@
 #pragma once
+#include "pch.h"
 #include "Board.h"
 #include "Unit.h"
 #include <vector>
@@ -9,7 +10,7 @@ class GameLogic
 public:
 	GameLogic();
 	~GameLogic();
-	bool WhiteMoveGood(std::vector<Unit>& WUnit_);
+    bool WhiteMoveGood(Unit* WUnit_, int x, int y);
 	bool BlackMoveGood(std::vector<Unit>& BUnit_);    
 
 private:

@@ -19,7 +19,7 @@ int Board::GridX(char letter)
 	if (letter == 'E') { return 28 + offset * 4; };
 	if (letter == 'F') { return 28 + offset * 5; };
 	if (letter == 'G') { return 28 + offset * 6; };
-	if (letter == 'H') { return 28 + offset * 7; };
+	if (letter == 'H') { return 28 + offset * 7; }; // modified grid. if piece is over the max grid return to end grid
 }
 //convert pixel location to row location of the board (row number, Y)
 int Board::GridY(int ycoord)
@@ -36,10 +36,13 @@ char Board::Xcood(int x)// this function convert mouse x position to grid coordi
 	if (x == 28 + 4*offset or x < 28 + 5 * offset) { return 'E'; };
 	if (x == 28 + 5*offset or x < 28 + 6 * offset) { return 'F'; };
 	if (x == 28 + 6 * offset or x < 28 + 7 * offset) { return 'G'; };
-	if (x == 28 + 7 * offset or x < 28 + 8 * offset) { return 'H'; };
+	if (x == 28 + 7 * offset or x> 28+ 7 *offset) { return 'H'; };
 }
 
 int Board::Ycood(int y)// this function convert mouse y position to grid coordinate x
 {
-	return 1 + (y - 28) / 56;
+	if (y< 420) {return 1 + (y - 28) / 56;}
+        if (y > 420) {
+          return 8;
+        } // modified grid. if piece is over the max grid return to end grid
 }
