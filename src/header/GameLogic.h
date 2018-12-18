@@ -10,7 +10,7 @@ class GameLogic
 public:
 	GameLogic();
 	~GameLogic();
-    bool WhiteMoveGood(Unit* WUnit_, int x, int y);
+    bool WhiteMoveGood(Unit* WUnit_, int targetX, int targetY, int beforeX, int beforeY);
 	bool BlackMoveGood(std::vector<Unit>& BUnit_);    
 
 private:

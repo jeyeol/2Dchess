@@ -1,2 +1,3 @@
-﻿  InputProcessing.cpp
-LINK : fatal error LNK1168: cannot open D:\c++ projects\2Dchess\Debug\2Dchess.exe for writing
+﻿  GameLogic.cpp
+d:\c++ projects\2dchess\2dchess\src\body\gamelogic.cpp(40): warning C4715: 'GameLogic::WhiteMoveGood': not all control paths return a value
+  2Dchess.vcxproj -> D:\c++ projects\2Dchess\Debug\2Dchess.exe
