@@ -63,15 +63,20 @@ void InputProcessing::MouseInput(std::vector<Unit>& Unit_) {
     if (Selected->Color_ == Unit::BLACK) {
       CurrentPlayer = 'B';
       std::cout << "black units selected";
+      GoodMove_ = Logic_.BlackMoveGood(Selected, Event.motion.x, Event.motion.y,
+                                       beforeX, beforeY);
     };
 
 	if (GoodMove_) {
-    
+      std::cout << "Good Move" << std::endl;
     Selected->SetX(Board_.GridX(Board_.Xcood(Event.motion.x)));
     Selected->SetY(Board_.GridY(Board_.Ycood(Event.motion.y)));
     }
 	std::cout << "dX ->" << dx << "dY ->" << dy << std::endl;
        
+	if (!GoodMove_) {
+          std::cout << "wrong move" << std::endl;
+        }
 	
     // new position
     targetX = beforeX + dx;
