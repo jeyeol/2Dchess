@@ -21,9 +21,6 @@ void InputProcessing::MouseInput(std::vector<Unit>& Unit_) {
             // assign old position for piece
             beforeX = Selected->GetX();
             beforeY = Selected->GetY();
-            
-
-           
           }
         if (GoodMove_) {
           std::cout << "Goodmove";
@@ -36,7 +33,7 @@ void InputProcessing::MouseInput(std::vector<Unit>& Unit_) {
       case SDL_MOUSEBUTTONUP:
         if (Event.button.button == SDL_BUTTON_LEFT) {
           // intergrate into unit class
-          
+
           Selected = nullptr;
           if (Board_.GridX(targetX) != Board_.GridX(beforeX) or
               Board_.GridY(targetY) != Board_.GridY(beforeY)) {
@@ -50,42 +47,43 @@ void InputProcessing::MouseInput(std::vector<Unit>& Unit_) {
         }
         break;
     }
-  
 
-  if (Selected) {
-    // set new target positions for the piece
-    if (Selected->Color_ == Unit::WHITE) {
-      CurrentPlayer = 'W';
-      std::cout << "white units selected";
-      GoodMove_ =
-          Logic_.WhiteMoveGood(Selected, Event.motion.x, Event.motion.y, beforeX, beforeY);
-    };
-    if (Selected->Color_ == Unit::BLACK) {
-      CurrentPlayer = 'B';
-      std::cout << "black units selected";
-      GoodMove_ = Logic_.BlackMoveGood(Selected, Event.motion.x, Event.motion.y,
-                                       beforeX, beforeY);
-    };
+    if (Selected) {
+      // set new target positions for the piece
+      if (Selected->Color_ == Unit::WHITE) {
+        CurrentPlayer = 'W';
+        std::cout << "white units selected";
+        GoodMove_ = Logic_.WhiteMoveGood(
+            Selected, Board_.GridX(Board_.Xcood(Event.motion.x)),
+            Board_.GridY(Board_.Ycood(Event.motion.y)), beforeX, beforeY);
+      };
+      if (Selected->Color_ == Unit::BLACK) {
+        CurrentPlayer = 'B';
+        std::cout << "black units selected";
+        GoodMove_ = Logic_.BlackMoveGood(
+            Selected, Board_.GridX(Board_.Xcood(Event.motion.x)),
+            Board_.GridY(Board_.Ycood(Event.motion.y)), beforeX, beforeY);
+      };
 
-	if (GoodMove_) {
-      std::cout << "Good Move" << std::endl;
-    Selected->SetX(Board_.GridX(Board_.Xcood(Event.motion.x)));
-    Selected->SetY(Board_.GridY(Board_.Ycood(Event.motion.y)));
+      if (GoodMove_) {
+        std::cout << "Good Move" << std::endl;
+        Selected->SetX(Board_.GridX(Board_.Xcood(Event.motion.x)));
+        Selected->SetY(Board_.GridY(Board_.Ycood(Event.motion.y)));
+      }
+      std::cout << "dX ->" << dx << "dY ->" << dy << std::endl;
+
+      if (!GoodMove_) {
+        std::cout << "wrong move" << std::endl;
+      }
+
+      // new position
+      targetX = beforeX + dx;
+      targetY = beforeY + dy;
+      // change in position
+      dx = Selected->GetX() - beforeX;
+      dy = Selected->GetY() - beforeY;
+      Selected->newX = targetX;
+      Selected->newY = targetY;
     }
-	std::cout << "dX ->" << dx << "dY ->" << dy << std::endl;
-       
-	if (!GoodMove_) {
-          std::cout << "wrong move" << std::endl;
-        }
-	
-    // new position
-    targetX = beforeX + dx;
-    targetY = beforeY + dy;
-    // change in position
-    dx = Selected->GetX() - beforeX;
-    dy = Selected->GetY() - beforeY;
-    Selected->newX = targetX;
-    Selected->newY = targetY;
-  }
   }
 }

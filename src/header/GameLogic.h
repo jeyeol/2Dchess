@@ -9,8 +9,7 @@ class GameLogic {
  public:
   GameLogic();
   ~GameLogic();
-  bool WhiteMoveGood(Unit* WUnit_, int targetX, int targetY, int beforeX,
-                     int beforeY);
+  bool WhiteMoveGood(Unit* WUnit_, int targetX, int targetY, int beforeX, int beforeY);
   bool BlackMoveGood(Unit* BUnit_, int targetX, int targetY, int beforeX,
                      int beforeY);
 
