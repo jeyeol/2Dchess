@@ -1,48 +1,44 @@
 #include "pch.h"
 #include "src/header/Board.h"
+Board::Board() {}
 
-Board::Board()
-{
+Board::~Board() {}
+
+int Board::GridCood(int x, int y) { return Calc(x) + 8*(Calc(y)-1); }
+
+glm::vec2 Board::PixelCood(int gridNumber) {
+ 
+  int xCood, yCood;
+ 
+    xCood = ConvertGridX(gridNumber);  // column number
+    yCood = ConvertGridY(gridNumber);  // row number
+ 
+  cood.x = origin + offset * (xCood - 1);  //calculate x pixcel number
+  cood.y = origin + offset * (yCood - 1); // calculate y pixcel number
+  return cood;
 }
 
-
-Board::~Board()
-{
-}
-//convert pixel location to letter location of the board (column letter, X)
-int Board::GridX(char letter)
-{
-	if (letter == 'A') { return 28; };
-	if (letter == 'B') { return 28 + offset; };
-	if (letter == 'C') { return 28 + offset * 2; };
-	if (letter == 'D') { return 28 + offset * 3; };
-	if (letter == 'E') { return 28 + offset * 4; };
-	if (letter == 'F') { return 28 + offset * 5; };
-	if (letter == 'G') { return 28 + offset * 6; };
-	if (letter == 'H') { return 28 + offset * 7; }; // modified grid. if piece is over the max grid return to end grid
-}
-//convert pixel location to row location of the board (row number, Y)
-int Board::GridY(int ycoord)
-{
-	return 28 + offset * (ycoord - 1);
+int Board::Calc(int coordinate) {  // convert x pixcel cood to grid
+  if (coordinate < 420) {
+    return 1 + (coordinate - origin) / offset;
+  }
+  if (coordinate > 420) {
+    return 8;
+  }
 }
 
-char Board::Xcood(int x)// this function convert mouse x position to grid coordinate x
-{
-	if (x == 28  or x < 28 + offset){ return 'A'; };
-	if (x == 28+offset or x < 28 + 2*offset) { return 'B'; };
-	if (x == 28 + 2*offset or x < 28 + 3 * offset) { return 'C'; };
-	if (x == 28 + 3*offset or x < 28 + 4 * offset) { return 'D'; };
-	if (x == 28 + 4*offset or x < 28 + 5 * offset) { return 'E'; };
-	if (x == 28 + 5*offset or x < 28 + 6 * offset) { return 'F'; };
-	if (x == 28 + 6 * offset or x < 28 + 7 * offset) { return 'G'; };
-	if (x == 28 + 7 * offset or x> 28+ 7 *offset) { return 'H'; };
+int Board::ConvertGridX(
+    int gridNumber) {  // find out column number from the grid
+  if (gridNumber % 8 == 0) {
+    return 8;
+  } else {
+    return gridNumber % 8;
+  }
 }
-
-int Board::Ycood(int y)// this function convert mouse y position to grid coordinate x
-{
-	if (y< 420) {return 1 + (y - 28) / 56;}
-        if (y > 420) {
-          return 8;
-        } // modified grid. if piece is over the max grid return to end grid
+int Board::ConvertGridY(int gridNumber) {  // find out row number from the grid
+  if (gridNumber % 8 == 0) {
+    return gridNumber / 8;
+  } else {
+    return gridNumber / 8 + 1;
+  }  
 }

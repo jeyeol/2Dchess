@@ -1,26 +1,39 @@
 #pragma once
 
-//unit class uses for set and update coordinate of pieces
+// unit class uses for set and update coordinate of pieces
 class Unit {
+ public:
+  enum PlayerColor { WHITE, BLACK };
+  enum UnitType { PAWN, ROOK, KING, QUEEN, BISHOP, KNIGHT };
 
-public:
-	enum PlayerColor {WHITE, BLACK};
-	enum UnitType {PAWN, ROOK, KING, QUEEN, BISHOP, KNIGHT};
-	Unit() {};
-	Unit(int x, int y, PlayerColor Color ,UnitType UnitType) : x_(x), y_(y), oldX(x), oldY(y), newX(x), newY(y),Color_(Color), UnitType_(UnitType) {  };
-	inline int SetX(int x) { x_ = x; return x_; };
-	inline int SetY(int y) { y_ = y; return y_; };
-	inline int GetX() { return x_; };
-	inline int GetY() { return y_; };
-	UnitType UnitType_;
-	PlayerColor Color_;
-	int oldX;
-	int oldY;
-	int newX;
-	int newY;
-	
-private:
-	int x_, y_;
-	
+  Unit(){};
+  Unit(int gridnumber, PlayerColor Color, UnitType UnitType)
+      : number_(gridnumber),
+        oldgrid_(gridnumber),
+        newgrid_(gridnumber),
+        Color_(Color),
+        UnitType_(UnitType){};
+
+  inline int Setgrid(int number) {
+    number_ = number;
+    return number_;
+  };
+  inline int Getgrid() { return number_; };
+  inline int GetOldgrid() { return oldgrid_; };
+  inline int SetOldgrid(int number) {
+    oldgrid_ = number;
+    return oldgrid_;
+  };
+  inline int SetNewgrid(int number) {
+    number = newgrid_;
+    return newgrid_;
+  };
+  inline int Getoldgrid() { return oldgrid_; };
+  UnitType UnitType_;
+  PlayerColor Color_;
+
+ private:
+  int number_; // this is the variable for grid numbers
+  int newgrid_;
+  int oldgrid_;
 };
-

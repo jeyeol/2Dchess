@@ -38,12 +38,12 @@ SDL_Rect Texture::ImageRect(int x, int y, int h, int w)
 //assign unit image location of the units for White
 SDL_Rect Texture::WhiteUnit(int i)
 {	
-	if (i >= 0 && i <8)  { Rect.x = 288, Rect.y = 58, Rect.h = 56, Rect.w = 56; return Rect; }
+	if (i >= 0 && i <8)  { Rect.x = 288, Rect.y = 58, Rect.h = 56, Rect.w = 56; return Rect; }// case for pawns
 	if (i == 8 or i == 9) { Rect.x = 57, Rect.y = 58, Rect.h = 56, Rect.w = 56; return Rect; }// case for kight
 	if (i == 10 or i == 11) { Rect.x = 114, Rect.y = 58, Rect.h = 56, Rect.w = 56; return Rect; }// case for bishop
-	if (i == 12 or i == 13) { Rect.x = 0, Rect.y = 58, Rect.h = 56, Rect.w = 56; return Rect; }
-	if (i== 14) { Rect.x = 57*3, Rect.y = 58, Rect.h = 56, Rect.w = 56; return Rect; }
-	if (i == 15) { Rect.x = 57 *4, Rect.y = 58, Rect.h = 56, Rect.w = 56; return Rect; }
+	if (i == 12 or i == 13) { Rect.x = 0, Rect.y = 58, Rect.h = 56, Rect.w = 56; return Rect; } //bishop
+	if (i== 14) { Rect.x = 57*4, Rect.y = 58, Rect.h = 56, Rect.w = 56; return Rect; } //king
+	if (i == 15) { Rect.x = 57 *3, Rect.y = 58, Rect.h = 56, Rect.w = 56; return Rect; } //queen
 }
 //assign unit image location of the units for black
 SDL_Rect Texture::BlackUnit(int i)
@@ -52,8 +52,8 @@ SDL_Rect Texture::BlackUnit(int i)
 	if (i == 8 or i == 9) { Rect.x = 57, Rect.y = 0, Rect.h = 56, Rect.w = 56; return Rect; }// case for kights
 	if (i == 10 or i == 11) { Rect.x = 114, Rect.y = 0, Rect.h = 56, Rect.w = 56; return Rect; }// case for bishops
 	if (i == 12 or i == 13) { Rect.x = 0, Rect.y = 0, Rect.h = 56, Rect.w = 56; return Rect; } // case for Rook
-	if (i == 14) { Rect.x = 57 * 3, Rect.y = 0, Rect.h = 56, Rect.w = 56; return Rect; } // case for king
-	if (i == 15) { Rect.x = 57 * 4, Rect.y = 0, Rect.h = 56, Rect.w = 56; return Rect; } // case for queen
+	if (i == 14) { Rect.x = 57 * 4, Rect.y = 0, Rect.h = 56, Rect.w = 56; return Rect; } // case for king
+	if (i == 15) { Rect.x = 57 * 3, Rect.y = 0, Rect.h = 56, Rect.w = 56; return Rect; } // case for queen
 }
 //method of assigning texture from surface
 SDL_Texture* Texture::CreateTexture(SDL_Renderer* Rend, SDL_Texture* texture, SDL_Surface* sourceSurface)

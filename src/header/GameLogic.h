@@ -6,16 +6,29 @@
 #include "pch.h"
 
 class GameLogic {
- public:
+ public: //applies for the whole Unit. binder functions
   GameLogic();
   ~GameLogic();
-  bool WhiteMoveGood(Unit* WUnit_, int targetX, int targetY, int beforeX, int beforeY);
-  bool BlackMoveGood(Unit* BUnit_, int targetX, int targetY, int beforeX,
-                     int beforeY);
+  bool InitPosition(Unit* Unit_, int beforeGrid);
+  bool MoveGood(Unit* Unit_, int targetGrid, int beforeGrid);
+  
 
+ public: //control logic by piece
+  bool PawnMove(Unit* Unit_, int targetGrid, int beforeGrid); //process the logic of pawn
+  bool RookMove(Unit* Unit_, int targetGrid, int beforeGrid);  // process the logic of rook
+  bool BishopMove(Unit* Unit_, int targetGrid, int beforeGrid); //process the logic of bishop
+  bool KnightMove(Unit* Unit_, int targetGrid, int beforeGrid);
+  bool KingMove(Unit* Unit_, int targetGrid, int beforeGrid);
+  bool QueenMove(Unit* Unit_, int targetGrid, int beforeGrid);
+  bool EnemyOnWay(Unit* Unit_, int targetGrid, int beforeGrid);
+  
  private:
   Board Board_;
   Unit* WCheckMove = nullptr;
   Unit* BCheckMove = nullptr;
   bool GoodMove_;
+  bool InitPosition_ = false;
+  bool CanKill_=false;
+  bool EnemyOnWay_; //check if the Enemy is blocking the way
+  bool TeamOnWay_; // check if the same team is block the way
 };
