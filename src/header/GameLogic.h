@@ -10,17 +10,19 @@ class GameLogic {
   GameLogic();
   ~GameLogic();
   bool InitPosition(Unit* Unit_, int beforeGrid);
-  bool MoveGood(Unit* Unit_, int targetGrid, int beforeGrid);
+  bool MoveGood(Unit* Unit_, int targetGrid,
+                int beforeGrid, std::vector<Unit*> WholePiece); 
+  bool PathOccupied(Unit* Unit_, int targetGrid, int beforeGrid,
+                    std::vector<Unit*> WholePiece);
+  bool TargetOccupied(Unit* Unit_, int targetGrid, int beforeGrid);
   
-
  public: //control logic by piece
-  bool PawnMove(Unit* Unit_, int targetGrid, int beforeGrid); //process the logic of pawn
-  bool RookMove(Unit* Unit_, int targetGrid, int beforeGrid);  // process the logic of rook
-  bool BishopMove(Unit* Unit_, int targetGrid, int beforeGrid); //process the logic of bishop
-  bool KnightMove(Unit* Unit_, int targetGrid, int beforeGrid);
-  bool KingMove(Unit* Unit_, int targetGrid, int beforeGrid);
-  bool QueenMove(Unit* Unit_, int targetGrid, int beforeGrid);
-  bool EnemyOnWay(Unit* Unit_, int targetGrid, int beforeGrid);
+  bool PawnMove(Unit* Unit_, int targetGrid, int beforeGrid ); //process the logic of pawn
+  bool RookMove(Unit* Unit_, int Dx,  int Dy);  // process the logic of rook
+  bool BishopMove(Unit* Unit_, int Dx, int Dy);  // process the logic of bishop
+  bool KnightMove(Unit* Unit_, int Dx, int Dy);
+  bool KingMove(Unit* Unit_, int Dx, int Dy);
+  bool QueenMove(Unit* Unit_, int Dx, int Dy);
   
  private:
   Board Board_;
@@ -29,6 +31,8 @@ class GameLogic {
   bool GoodMove_;
   bool InitPosition_ = false;
   bool CanKill_=false;
-  bool EnemyOnWay_; //check if the Enemy is blocking the way
-  bool TeamOnWay_; // check if the same team is block the way
+  bool EnemyOnTarget_; //check if the Enemy is blocking the way
+  bool TeamOnTarget_; // check if the same team is block the way
+  bool PathOccupied_;
+  bool TargetOccupied_;
 };

@@ -1,10 +1,12 @@
 #include "pch.h"
 #include "src/header/GameEngine.h"
 
+
 GameEngine::GameEngine() {
   InitWindowandRenderer();
   UnitVectorsInit();
   CreateSurfaceandTexture();
+  SumofPieces(wUnits, bUnits);
 }
 
 GameEngine::~GameEngine() {
@@ -65,26 +67,26 @@ void GameEngine::RenderTexture() {
 // update
 void GameEngine::UnitVectorsInit() {
   for (int i = 1; i < 9; i++)
-    wUnits.emplace_back(48 + i, Unit::WHITE, Unit::PAWN);  // white pawns
-  wUnits.emplace_back(58, Unit::WHITE, Unit::KNIGHT);      // white knight 1
-  wUnits.emplace_back(63, Unit::WHITE, Unit::KNIGHT);      // white knight 2
-  wUnits.emplace_back(59, Unit::WHITE, Unit::BISHOP);      // white bishop 1
-  wUnits.emplace_back(62, Unit::WHITE, Unit::BISHOP);      // white bishop 2
-  wUnits.emplace_back(57, Unit::WHITE, Unit::ROOK);        // white rook
-  wUnits.emplace_back(64, Unit::WHITE, Unit::ROOK);        // white rook2
-  wUnits.emplace_back(61, Unit::WHITE, Unit::KING);        // white king
-  wUnits.emplace_back(60, Unit::WHITE, Unit::QUEEN);       // white queen
+    wUnits.emplace_back(48 + i, Unit::WHITE, Unit::PAWN, Unit::LIVE);  // white pawns
+  wUnits.emplace_back(58, Unit::WHITE, Unit::KNIGHT, Unit::LIVE);  // white knight 1
+  wUnits.emplace_back(63, Unit::WHITE, Unit::KNIGHT, Unit::LIVE);  // white knight 2
+  wUnits.emplace_back(59, Unit::WHITE, Unit::BISHOP, Unit::LIVE);  // white bishop 1
+  wUnits.emplace_back(62, Unit::WHITE, Unit::BISHOP, Unit::LIVE);  // white bishop 2
+  wUnits.emplace_back(57, Unit::WHITE, Unit::ROOK, Unit::LIVE);   // white rook
+  wUnits.emplace_back(64, Unit::WHITE, Unit::ROOK, Unit::LIVE);   // white rook2
+  wUnits.emplace_back(61, Unit::WHITE, Unit::KING, Unit::LIVE);   // white king
+  wUnits.emplace_back(60, Unit::WHITE, Unit::QUEEN, Unit::LIVE);  // white queen
 
   for (int i = 1; i < 9; i++)
-    bUnits.emplace_back(8+i, Unit_.BLACK, Unit_.PAWN);  // black pawns
-  bUnits.emplace_back(2, Unit_.BLACK, Unit_.KNIGHT);      // black knight1
-  bUnits.emplace_back(7, Unit_.BLACK, Unit_.KNIGHT);      // black knight2                                                
-  bUnits.emplace_back(3, Unit_.BLACK, Unit_.BISHOP);  // black bishop1
-  bUnits.emplace_back(6, Unit_.BLACK, Unit_.BISHOP);  // black bishop2
-  bUnits.emplace_back(1, Unit_.BLACK, Unit_.ROOK);    // black rook1
-  bUnits.emplace_back(8, Unit_.BLACK, Unit_.ROOK);    // black rook2
-  bUnits.emplace_back(5, Unit_.BLACK, Unit_.KING);    // black king
-  bUnits.emplace_back(4, Unit_.BLACK, Unit_.QUEEN);   // black Queen
+    bUnits.emplace_back(8 + i, Unit_.BLACK, Unit_.PAWN, Unit::LIVE);  // black pawns
+  bUnits.emplace_back(2, Unit_.BLACK, Unit_.KNIGHT, Unit::LIVE);  // black knight1
+  bUnits.emplace_back(7, Unit_.BLACK, Unit_.KNIGHT, Unit::LIVE);  // black knight2
+  bUnits.emplace_back(3, Unit_.BLACK, Unit_.BISHOP, Unit::LIVE);  // black bishop1
+  bUnits.emplace_back(6, Unit_.BLACK, Unit_.BISHOP, Unit::LIVE); // black bishop2
+  bUnits.emplace_back(1, Unit_.BLACK, Unit_.ROOK, Unit::LIVE);  // black rook1
+  bUnits.emplace_back(8, Unit_.BLACK, Unit_.ROOK, Unit::LIVE);  // black rook2
+  bUnits.emplace_back(5, Unit_.BLACK, Unit_.KING, Unit::LIVE);  // black king
+  bUnits.emplace_back(4, Unit_.BLACK, Unit_.QUEEN, Unit::LIVE);  // black Queen
 }
 
 void GameEngine::CreateSurfaceandTexture() {
@@ -96,7 +98,16 @@ void GameEngine::CreateSurfaceandTexture() {
 // update piece information & cover the movement logic
 void GameEngine::PositionUpdate() {
   if (Input_.WhiteTurn) {
-    Input_.MouseInput(wUnits);};
+    Input_.MouseInput(wUnits, wholeUnits);
+  };
   if (!Input_.WhiteTurn) {
-    Input_.MouseInput(bUnits);};
+    Input_.MouseInput(bUnits, wholeUnits);
+  };
 };
+
+std::vector<Unit*> GameEngine::SumofPieces(std::vector<Unit>& Vec1,
+                                           std::vector<Unit>& Vec2) {
+  for (auto& wPiece : Vec1) wholeUnits.push_back(&wPiece);
+  for (auto& bPiece : Vec2) wholeUnits.push_back(&bPiece);
+  return wholeUnits;
+}

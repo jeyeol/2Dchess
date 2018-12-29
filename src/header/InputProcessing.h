@@ -14,7 +14,7 @@ class InputProcessing {
   InputProcessing();
   ~InputProcessing();
   bool WhiteTurn = true;
-  void MouseInput(std::vector<Unit>& Unit_);
+  void MouseInput(std::vector<Unit>& Unit_ , std::vector<Unit*> WholePiece_);
 
  private:
   Unit* Selected = nullptr;

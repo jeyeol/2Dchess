@@ -6,19 +6,18 @@ InputProcessing::InputProcessing() {}
 
 InputProcessing::~InputProcessing() {}
 
-void InputProcessing::MouseInput(std::vector<Unit>& Unit_) {
+void InputProcessing::MouseInput(std::vector<Unit>& Unit_,
+                                 std::vector<Unit*> WholePiece_) {
   while (SDL_PollEvent(&Event)) {
     switch (Event.type) {
       case SDL_MOUSEBUTTONDOWN:
-
       {
         if (Event.button.button != SDL_BUTTON_LEFT) break;
         for (auto& piece : Unit_)
           if (Board_.GridCood(Event.motion.x, Event.motion.y) ==
               piece.Getgrid()) {
             Selected = &piece;
-            
-                      
+                                
             // assign old position for piece
             BeforeGrid_ = Selected->Getgrid();
            
@@ -54,7 +53,7 @@ void InputProcessing::MouseInput(std::vector<Unit>& Unit_) {
       
       GoodMove_ = Logic_.MoveGood(
           Selected, Board_.GridCood(Event.motion.x, Event.motion.y)
-          , BeforeGrid_);
+          , BeforeGrid_, WholePiece_);
       std::cout << "Target Grid is -> "
                 << Board_.GridCood(Event.motion.x, Event.motion.y);
       

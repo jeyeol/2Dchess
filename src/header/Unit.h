@@ -5,14 +5,16 @@ class Unit {
  public:
   enum PlayerColor { WHITE, BLACK };
   enum UnitType { PAWN, ROOK, KING, QUEEN, BISHOP, KNIGHT };
+  enum Status { LIVE, DEAD };
 
   Unit(){};
-  Unit(int gridnumber, PlayerColor Color, UnitType UnitType)
+  Unit(int gridnumber, PlayerColor Color, UnitType UnitType, Status Status)
       : number_(gridnumber),
         oldgrid_(gridnumber),
         newgrid_(gridnumber),
         Color_(Color),
-        UnitType_(UnitType){};
+        UnitType_(UnitType),
+        Status_(Status){};
 
   inline int Setgrid(int number) {
     number_ = number;
@@ -31,9 +33,10 @@ class Unit {
   inline int Getoldgrid() { return oldgrid_; };
   UnitType UnitType_;
   PlayerColor Color_;
+  Status Status_;
 
  private:
-  int number_; // this is the variable for grid numbers
+  int number_;  // this is the variable for grid numbers
   int newgrid_;
   int oldgrid_;
 };
