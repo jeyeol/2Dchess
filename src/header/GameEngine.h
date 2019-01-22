@@ -5,7 +5,7 @@
 #include "src/header/InputProcessing.h"
 #include <vector>
 
-
+//responsible for position update, initialization of position, renderer, window
 class GameEngine
 {
 public:

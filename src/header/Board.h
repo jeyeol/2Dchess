@@ -1,6 +1,6 @@
 #pragma once
 #include "dep/include/glm/glm/glm.hpp"
-
+// convert position vector to grid cood and process
 class Board {
  public:
   Board();

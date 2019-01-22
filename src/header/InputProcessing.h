@@ -28,6 +28,7 @@ class InputProcessing {
   int BeforeGrid_;
   int AfterGrid_;
   int ChangeGrid_;
+  int CurrentGrid_;
   bool turnChange = false;
   char CurrentPlayer = 'W';
   bool InBoard_;

@@ -19,7 +19,8 @@ void InputProcessing::MouseInput(std::vector<Unit>& Unit_,
             Selected = &piece;
                                 
             // assign old position for piece
-            BeforeGrid_ = Selected->Getgrid();
+            BeforeGrid_ = Selected->Getgrid();         
+			
            
           }
 
@@ -40,6 +41,11 @@ void InputProcessing::MouseInput(std::vector<Unit>& Unit_,
           }
         }
         break;
+      case SDL_MOUSEMOTION:
+        if (Selected !=nullptr) {
+          CurrentGrid_ = Selected->Getgrid();
+          }
+        break;
     }
 
     if (Selected) {
@@ -53,12 +59,13 @@ void InputProcessing::MouseInput(std::vector<Unit>& Unit_,
       
       GoodMove_ = Logic_.MoveGood(
           Selected, Board_.GridCood(Event.motion.x, Event.motion.y)
-          , BeforeGrid_, WholePiece_);
-      std::cout << "Target Grid is -> "
+          , BeforeGrid_, WholePiece_, CurrentGrid_);
+      std::cout << "Target Grid pointing to ->"
                 << Board_.GridCood(Event.motion.x, Event.motion.y);
-      
+     
+      std::cout << "current Grid is ->" << CurrentGrid_ << std::endl;
       if (GoodMove_) {
-        std::cout << "Good Move" << std::endl;
+       
         Selected->Setgrid(Board_.GridCood(
           Event.motion.x,
           Event.motion.y));  // convert mouse position-> grid then set the grid

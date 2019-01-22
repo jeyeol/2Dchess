@@ -22,7 +22,7 @@ int Board::Calc(int coordinate) {  // convert x pixcel cood to grid
   if (coordinate < 420) {
     return 1 + (coordinate - origin) / offset;
   }
-  if (coordinate > 420) {
+  if (coordinate > 420 || coordinate ==420) {
     return 8;
   }
 }

@@ -1,5 +1,6 @@
 ﻿  GameLogic.cpp
 c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(18): warning C4715: 'GameLogic::InitPosition': not all control paths return a value
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(72): warning C4715: 'GameLogic::PawnMove': not all control paths return a value
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(52): warning C4715: 'GameLogic::MoveGood': not all control paths return a value
+c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(55): warning C4715: 'GameLogic::MoveGood': not all control paths return a value
+c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(91): warning C4715: 'GameLogic::PawnMove': not all control paths return a value
+c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(183): warning C4715: 'GameLogic::Tilefilled': not all control paths return a value
   2Dchess.vcxproj -> C:\Users\jeyeo\Desktop\2Dchess\Debug\2Dchess.exe
