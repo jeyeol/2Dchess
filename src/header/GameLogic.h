@@ -24,7 +24,7 @@ class GameLogic {
   bool KnightMove(Unit* Unit_, int Dx, int Dy);
   bool KingMove(Unit* Unit_, int Dx, int Dy);
   bool QueenMove(Unit* Unit_, int Dx, int Dy);
-  bool Tilefilled(Unit* Unit_, std::vector<Unit*> WholePiece, int TargetGrid);
+
   
   
  private:
