@@ -40,8 +40,10 @@ class GameLogic {
   bool TeamOnTarget_; // check if the same team is block the way
   bool PathOccupied_;
   bool TargetOccupied_;
+  bool IsDiagonal_;
   int UnitMoved_=0; //how much units of movement does it goes (ie for bishop 1 scale diagoal)
   int DeltaUnit_ = 0;
   int Switch_=0;
+  int FinalDelta_;
   
 };

@@ -1,68 +1,8 @@
 ﻿  GameLogic.cpp
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(4): error C2653: 'GameLogic': is not a class or namespace name
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(4): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(4): warning C4508: 'GameLogic': function should return a value; 'void' return type assumed
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(6): error C2523: 'GameLogic::~GameLogic': destructor tag mismatch
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(6): error C2510: 'GameLogic': left of '::' must be a class/struct/union
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(6): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(6): error C2084: function 'int GameLogic(void)' already has a body
-  c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(4): note: see previous definition of 'GameLogic'
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(8): error C2510: 'GameLogic': left of '::' must be a class/struct/union
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(9): error C2065: 'Unit': undeclared identifier
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(9): error C2065: 'Unit_': undeclared identifier
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(10): error C2062: type 'int' unexpected
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(10): error C2143: syntax error: missing ';' before '{'
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(10): error C2447: '{': missing function header (old-style formal list?)
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(20): error C2510: 'GameLogic': left of '::' must be a class/struct/union
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(20): error C2065: 'Unit': undeclared identifier
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(20): error C2065: 'Unit_': undeclared identifier
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(20): error C2062: type 'int' unexpected
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(21): error C2039: 'vector': is not a member of 'std'
-  c:\users\jeyeo\desktop\2dchess\2dchess\predefined c++ types (compiler internal)(256): note: see declaration of 'std'
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(21): error C2143: syntax error: missing ';' before '{'
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(21): error C2447: '{': missing function header (old-style formal list?)
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(63): error C2510: 'GameLogic': left of '::' must be a class/struct/union
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(63): error C2065: 'Unit': undeclared identifier
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(63): error C2065: 'Unit_': undeclared identifier
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(63): error C2062: type 'int' unexpected
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(63): error C2143: syntax error: missing ';' before '{'
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(63): error C2447: '{': missing function header (old-style formal list?)
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(100): error C2510: 'GameLogic': left of '::' must be a class/struct/union
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(100): error C2065: 'Unit': undeclared identifier
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(100): error C2065: 'Unit_': undeclared identifier
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(100): error C2062: type 'int' unexpected
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(100): error C2143: syntax error: missing ';' before '{'
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(100): error C2447: '{': missing function header (old-style formal list?)
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(104): error C2510: 'GameLogic': left of '::' must be a class/struct/union
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(104): error C2065: 'Unit': undeclared identifier
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(104): error C2065: 'Unit_': undeclared identifier
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(104): error C2062: type 'int' unexpected
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(104): error C2143: syntax error: missing ';' before '{'
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(104): error C2447: '{': missing function header (old-style formal list?)
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(107): error C2510: 'GameLogic': left of '::' must be a class/struct/union
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(107): error C2065: 'Unit': undeclared identifier
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(107): error C2065: 'Unit_': undeclared identifier
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(107): error C2062: type 'int' unexpected
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(107): error C2143: syntax error: missing ';' before '{'
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(107): error C2447: '{': missing function header (old-style formal list?)
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(110): error C2510: 'GameLogic': left of '::' must be a class/struct/union
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(110): error C2065: 'Unit': undeclared identifier
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(110): error C2065: 'Unit_': undeclared identifier
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(110): error C2062: type 'int' unexpected
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(110): error C2143: syntax error: missing ';' before '{'
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(110): error C2447: '{': missing function header (old-style formal list?)
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(113): error C2510: 'GameLogic': left of '::' must be a class/struct/union
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(113): error C2065: 'Unit': undeclared identifier
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(113): error C2065: 'Unit_': undeclared identifier
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(113): error C2062: type 'int' unexpected
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(113): error C2143: syntax error: missing ';' before '{'
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(113): error C2447: '{': missing function header (old-style formal list?)
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(118): error C2510: 'GameLogic': left of '::' must be a class/struct/union
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(118): error C2065: 'Unit': undeclared identifier
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(118): error C2065: 'Unit_': undeclared identifier
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(118): error C2062: type 'int' unexpected
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(119): error C2039: 'vector': is not a member of 'std'
-  c:\users\jeyeo\desktop\2dchess\2dchess\predefined c++ types (compiler internal)(256): note: see declaration of 'std'
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(119): error C2143: syntax error: missing ';' before '{'
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(119): error C2447: '{': missing function header (old-style formal list?)
-c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(200): fatal error C1004: unexpected end-of-file found
+  InputProcessing.cpp
+  Generating Code...
+c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(19): warning C4715: 'GameLogic::InitPosition': not all control paths return a value
+c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(69): warning C4715: 'GameLogic::MoveGood': not all control paths return a value
+c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(106): warning C4715: 'GameLogic::PawnMove': not all control paths return a value
+c:\users\jeyeo\desktop\2dchess\2dchess\src\body\gamelogic.cpp(376): warning C4715: 'GameLogic::PathOccupied': not all control paths return a value
+  2Dchess.vcxproj -> C:\Users\jeyeo\Desktop\2Dchess\Debug\2Dchess.exe

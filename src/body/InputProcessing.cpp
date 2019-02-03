@@ -13,13 +13,16 @@ void InputProcessing::MouseInput(std::vector<Unit>& Unit_,
       case SDL_MOUSEBUTTONDOWN:
       {
         if (Event.button.button != SDL_BUTTON_LEFT) break;
-        for (auto& piece : Unit_)
+        
+        for (auto& piece : Unit_ )
           if (Board_.GridCood(Event.motion.x, Event.motion.y) ==
               piece.Getgrid()) {
             Selected = &piece;
+
+            if (Selected->Status_ == Unit::DEAD) break; // cant control the dead unit
                                 
             // assign old position for piece
-            BeforeGrid_ = Selected->Getgrid();         
+            BeforeGrid_ = Selected->Getgrid();      
 			
            
           }
@@ -41,8 +44,8 @@ void InputProcessing::MouseInput(std::vector<Unit>& Unit_,
           }
         }
         break;
-      case SDL_MOUSEMOTION:
-        if (Selected !=nullptr) {
+      case SDL_MOUSEMOTION:		  
+        if (Selected !=nullptr ) {
           CurrentGrid_ = Selected->Getgrid();
           }
         break;
