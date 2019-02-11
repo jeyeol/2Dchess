@@ -27,7 +27,7 @@ void GameEngine::InitWindowandRenderer() {
   // initialize window
   m_Window =
       SDL_CreateWindow("2D Chess Game!", SDL_WINDOWPOS_CENTERED,
-                       SDL_WINDOWPOS_CENTERED, 600, 1000, SDL_WINDOW_OPENGL);
+                       SDL_WINDOWPOS_CENTERED, 1000, 1000, SDL_WINDOW_OPENGL);
   if (m_Window == nullptr) {
     std::cout << "window failed to initialized...." << std::endl;
   }
@@ -46,10 +46,10 @@ void GameEngine::RenderTexture() {
   // render turn UI
   if (Input_.WhiteTurn)
     SDL_RenderCopy(m_Rend, t_UItexture, &tex_.ImageRect(0, 0, 350, 280),
-                   &tex_.ImageRect(0, 550, 75, 75));
+                   &tex_.ImageRect(0, 504, 75, 75));
   if (!Input_.WhiteTurn)
     SDL_RenderCopy(m_Rend, t_UItexture, &tex_.ImageRect(280, 0, 350, 280),
-                   &tex_.ImageRect(0, 550, 75, 75));
+                   &tex_.ImageRect(0, 504, 75, 75));
   // unit rendering
   for (int i = 0; i < 16; i++) {
     SDL_RenderCopy(m_Rend, t_unit, &tex_.WhiteUnit(i),

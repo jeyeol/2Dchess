@@ -6,7 +6,6 @@
 #include "dep/include/glm/glm/glm.hpp"
 #include "pch.h"
 #include "src/header/Board.h"
-#include "src/header/InputProcessing.h"
 #include "src/header/Unit.h"
 
 class InputProcessing {
@@ -15,7 +14,7 @@ class InputProcessing {
   ~InputProcessing();
   bool WhiteTurn = true;
   void MouseInput(std::vector<Unit>& Unit_ , std::vector<Unit*> WholePiece_);
-
+ 
  private:
   Unit* Selected = nullptr;
   Unit* Position = nullptr;
@@ -33,5 +32,6 @@ class InputProcessing {
   char CurrentPlayer = 'W';
   bool InBoard_;
   bool GoodMove_ = false;
+  bool ButtonDown_;
  
 };

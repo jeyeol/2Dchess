@@ -1,5 +1,7 @@
 #pragma once
 #include "dep/include/glm/glm/glm.hpp"
+#include "Unit.h"
+#include <vector>
 // convert position vector to grid cood and process
 class Board {
  public:
@@ -11,6 +13,8 @@ class Board {
   int Calc(int coordinate);  //calcuate row and columm number
   int ConvertGridX(int gridNumber);
   int ConvertGridY(int gridNumber);
+  glm::vec2 DeadUnitSpace(Unit* Unit_, std::vector<Unit*>WholePiece);
+  int DeadRoomNumber(Unit* Unit_, std::vector<Unit*> WholePiece);
 
  private:
   int offset = 56;
@@ -18,4 +22,7 @@ class Board {
   int netX;
   int netY;
   glm::vec2 cood;
+  Unit Unit_;
+  int DeadUnitRoom_;
+  glm::vec2 DeadUnitCood_;
 };

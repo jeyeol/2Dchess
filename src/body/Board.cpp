@@ -42,3 +42,15 @@ int Board::ConvertGridY(int gridNumber) {  // find out row number from the grid
     return gridNumber / 8 + 1;
   }  
 }
+
+glm::vec2 Board::DeadUnitSpace(Unit* Unit_, std::vector<Unit*> WholePiece) {
+  DeadUnitCood_.x = 0;
+  DeadUnitCood_.y = 523;
+  return DeadUnitCood_;
+  
+}
+
+int Board::DeadRoomNumber(Unit* Unit_, std::vector<Unit*> WholePiece) {	
+int Room = 1;
+  return Room;
+}
