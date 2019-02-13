@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "src/header/InputProcessing.h"
 
-
 InputProcessing::InputProcessing() {}
 
 InputProcessing::~InputProcessing() {}
@@ -11,56 +10,56 @@ void InputProcessing::MouseInput(std::vector<Unit>& Unit_,
   
   while (SDL_PollEvent(&Event)) {
     switch (Event.type) {
-      case SDL_MOUSEBUTTONDOWN:
-      {
-        if (Event.button.button != SDL_BUTTON_LEFT) break;   
-        for (auto& piece : Unit_ )
+      case SDL_MOUSEBUTTONDOWN: {
+        if (Event.button.button != SDL_BUTTON_LEFT) break;
+        for (auto& piece : Unit_) {         
           if (Board_.GridCood(Event.motion.x, Event.motion.y) ==
               piece.Getgrid()) {
             Selected = &piece;
-            ButtonDown_ = true;
-            
-            if (Selected->Status_ == Unit::DEAD) break; // cant control the dead unit                                
+
+            if (Selected->Status_ == Unit::DEAD)
+              break;  // cant control the dead unit
             // assign old position for piece
-            BeforeGrid_ = Selected->Getgrid();		        
+            BeforeGrid_ = Selected->Getgrid();
           }
-      }
-      break;
+		}
+      } break;
 
       case SDL_MOUSEBUTTONUP:
-        
+
         if (Event.button.button == SDL_BUTTON_LEFT) {
-          // intergrate into unit class         
-         GoodMove_ = Logic_.MoveGood(
+          // intergrate into unit class
+          GoodMove_ = Logic_.MoveGood(
               Selected, Board_.GridCood(Event.motion.x, Event.motion.y),
               BeforeGrid_, WholePiece_, CurrentGrid_, WhiteTurn);
 
-          if (Board_.GridCood(Event.motion.x, Event.motion.y) != BeforeGrid_ && GoodMove_) {
+          if (Board_.GridCood(Event.motion.x, Event.motion.y) != BeforeGrid_ &&
+              GoodMove_) {
             if (CurrentPlayer == 'W' && WhiteTurn) {
               WhiteTurn = false;
-            }            
+            }
             if (CurrentPlayer == 'B' && !WhiteTurn) {
               WhiteTurn = true;
             };
           }
           
-
           if (GoodMove_) {
             Selected->Setgrid(Board_.GridCood(
                 Event.motion.x,
-                Event.motion
-                    .y));  // convert mouse position-> grid then set the grid            
+                Event.motion.y));
+             // convert mouse position-> grid then set the grid
           }
           // change in position
           ChangeGrid_ =
               Selected->Getgrid() - BeforeGrid_;   // change in grid number
           AfterGrid_ = BeforeGrid_ + ChangeGrid_;  // new grid number
           Selected->SetNewgrid(
-              AfterGrid_);  // save the new grid number to unit variable		 
+              AfterGrid_);  // save the new grid number to unit variable          
         }
-		
         break;
-      case SDL_MOUSEMOTION:  
+       
+        
+      case SDL_MOUSEMOTION:
         if (Selected != nullptr) CurrentGrid_ = Selected->Getgrid();
         break;
     }
@@ -72,7 +71,7 @@ void InputProcessing::MouseInput(std::vector<Unit>& Unit_,
       };
       if (Selected->Color_ == Unit::BLACK) {
         CurrentPlayer = 'B';
-      };    
+      };
     }
   }
 }

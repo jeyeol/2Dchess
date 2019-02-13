@@ -13,16 +13,16 @@ class InputProcessing {
   InputProcessing();
   ~InputProcessing();
   bool WhiteTurn = true;
-  void MouseInput(std::vector<Unit>& Unit_ , std::vector<Unit*> WholePiece_);
- 
+  void MouseInput(std::vector<Unit>& Unit_, std::vector<Unit*> WholePiece_);
+
  private:
   Unit* Selected = nullptr;
   Unit* Position = nullptr;
   SDL_Event Event;
   GameLogic Logic_;
-  Board Board_;
-
+  Board Board_; 
  private:
+
   int mouseGrid;
   int BeforeGrid_;
   int AfterGrid_;
@@ -33,5 +33,5 @@ class InputProcessing {
   bool InBoard_;
   bool GoodMove_ = false;
   bool ButtonDown_;
- 
+  int TurnWhite_;
 };

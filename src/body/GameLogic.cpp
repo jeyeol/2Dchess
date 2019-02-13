@@ -19,10 +19,11 @@ bool GameLogic::InitPosition(
 
 bool GameLogic::MoveGood(Unit* Unit_, int targetGrid, int beforeGrid,
                          std::vector<Unit*> WholePiece, int CurrentGrid,
-                        bool WhiteTurn) {
-  PathOccupied_ =
-      PathOccupied(Unit_, targetGrid, beforeGrid, WholePiece, CurrentGrid); //see if anything is in the path
-  CanKill_ = CanKill(Unit_, targetGrid, beforeGrid, WholePiece, CurrentGrid); // check if the enemy unit is on the target
+                         bool WhiteTurn) {
+  PathOccupied_ = PathOccupied(Unit_, targetGrid, beforeGrid, WholePiece,
+                               CurrentGrid);  // see if anything is in the path
+  CanKill_ = CanKill(Unit_, targetGrid, beforeGrid, WholePiece,
+                     CurrentGrid);  // check if the enemy unit is on the target
 
   int DeltaX = Board_.ConvertGridX(targetGrid) -
                Board_.ConvertGridX(beforeGrid);  // columhn number
@@ -30,8 +31,8 @@ bool GameLogic::MoveGood(Unit* Unit_, int targetGrid, int beforeGrid,
                Board_.ConvertGridY(beforeGrid);  // row number
   dX_ = DeltaX;
   dY_ = DeltaY;
-  
-  switch (Unit_->UnitType_) {   
+  std::cout << RoomNum_ << std::endl;
+  switch (Unit_->UnitType_) {
     case Unit::PAWN:
       if (!PathOccupied_)
         return PawnMove(Unit_, targetGrid, beforeGrid, WholePiece);
@@ -70,8 +71,8 @@ bool GameLogic::MoveGood(Unit* Unit_, int targetGrid, int beforeGrid,
           return true;
         else
           return false;
-      }  	  
-        return false;
+      }
+      return false;
       break;
     case Unit::QUEEN:
       while (QueenMove(Unit_, targetGrid, beforeGrid)) {
@@ -99,27 +100,35 @@ bool GameLogic::MoveGood(Unit* Unit_, int targetGrid, int beforeGrid,
 }
 bool GameLogic::CanKill(
     Unit* Unit_, int targetGrid, int beforeGrid, std::vector<Unit*> WholePiece,
-    int CurrentGrid
-    ) {  // tells you how to move if you can kill enemy units
+    int CurrentGrid) {  // tells you how to move if you can kill enemy units
   int DeltaX = Board_.ConvertGridX(targetGrid) -
                Board_.ConvertGridX(beforeGrid);  // columhn number
   int DeltaY = Board_.ConvertGridY(targetGrid) -
                Board_.ConvertGridY(beforeGrid);  // row number
+  
+    for (auto* OtherUnit : WholePiece)  {
+      if (RoomNum_ == OtherUnit->Getgrid()) RoomNum_++;
+	}
+  
+ 
   switch (Unit_->UnitType_) {
     case Unit::PAWN:
-      for (auto* OtherUnit : WholePiece) {        
+      for (auto* OtherUnit : WholePiece) {
         if (Unit_->Color_ == Unit::WHITE) {
           if (targetGrid == OtherUnit->Getgrid() &&
-              (targetGrid == beforeGrid - 7 || targetGrid == beforeGrid - 9) && OtherUnit->Color_==Unit::BLACK) {           
-          OtherUnit->Setgrid(100);
+              (targetGrid == beforeGrid - 7 || targetGrid == beforeGrid - 9) &&
+              OtherUnit->Color_ == Unit::BLACK) {
+            OtherUnit->Setgrid(RoomNum_);
+            OtherUnit->Status_ == Unit::DEAD;
             return true;
           }
         }
         if (Unit_->Color_ == Unit::BLACK) {
           if (targetGrid == OtherUnit->Getgrid() &&
               (targetGrid == beforeGrid + 7 || targetGrid == beforeGrid + 9) &&
-              OtherUnit->Color_ == Unit::WHITE) {           
-              OtherUnit->Setgrid(100);
+              OtherUnit->Color_ == Unit::WHITE) {
+            OtherUnit->Setgrid(RoomNum_);
+            OtherUnit->Status_ == Unit::DEAD;
             return true;
           }
         }
@@ -130,22 +139,35 @@ bool GameLogic::CanKill(
       for (auto* OtherUnit : WholePiece) {
         if (targetGrid == OtherUnit->Getgrid() &&
             OtherUnit->Color_ != Unit_->Color_ &&
-            KnightMove(Unit_, targetGrid, beforeGrid))           
-		  {
-            OtherUnit->Setgrid(100);
-            return true;
-		  }      
-	  }
+            KnightMove(Unit_, targetGrid, beforeGrid)) {
+          OtherUnit->Setgrid(RoomNum_);
+          OtherUnit->Status_ == Unit::DEAD;
+          return true;
+        }
+      }
       return false;
       break;
-    case Unit::BISHOP:      
+    case Unit::BISHOP:
       for (auto* OtherUnit : WholePiece) {
         if (targetGrid == OtherUnit->Getgrid() &&
-              OtherUnit->Color_ != Unit_->Color_ &&
-              BishopMove(Unit_, targetGrid, beforeGrid)) {
-            OtherUnit->Setgrid(100);
-            return true;
-          }      
+            OtherUnit->Color_ != Unit_->Color_ &&
+            BishopMove(Unit_, targetGrid, beforeGrid)) {
+          OtherUnit->Setgrid(RoomNum_);
+          OtherUnit->Status_ == Unit::DEAD;
+          return true;
+        }
+      }
+      return false;
+      break;
+    case Unit::ROOK:
+      for (auto* OtherUnit : WholePiece) {
+        if (targetGrid == OtherUnit->Getgrid() &&
+            OtherUnit->Color_ != Unit_->Color_ &&
+            RookMove(Unit_, targetGrid, beforeGrid)) {
+          OtherUnit->Setgrid(RoomNum_);
+          OtherUnit->Status_ == Unit::DEAD;
+          return true;
+        }
       }
       return false;
       break;
@@ -153,8 +175,9 @@ bool GameLogic::CanKill(
       for (auto* OtherUnit : WholePiece) {
         if (targetGrid == OtherUnit->Getgrid() &&
             OtherUnit->Color_ != Unit_->Color_ &&
-           KingMove(Unit_, targetGrid, beforeGrid)) {
-          OtherUnit->Setgrid(100);
+            KingMove(Unit_, targetGrid, beforeGrid)) {
+          OtherUnit->Setgrid(RoomNum_);
+          OtherUnit->Status_ == Unit::DEAD;
           return true;
         }
       }
@@ -163,10 +186,11 @@ bool GameLogic::CanKill(
         if (targetGrid == OtherUnit->Getgrid() &&
             OtherUnit->Color_ != Unit_->Color_ &&
             QueenMove(Unit_, targetGrid, beforeGrid)) {
-          OtherUnit->Setgrid(100);
+          OtherUnit->Setgrid(RoomNum_);
+          OtherUnit->Status_ == Unit::DEAD;
           return true;
         }
-      }    
+      }
   }
   return true;
 }
@@ -212,9 +236,9 @@ bool GameLogic::PawnMove(Unit* Unit_, int targetGrid, int beforeGrid,
 
 bool GameLogic::RookMove(Unit* Unit_, int targetGrid, int beforeGrid) {
   int Dx = Board_.ConvertGridX(targetGrid) -
-               Board_.ConvertGridX(beforeGrid);  // columhn number
+           Board_.ConvertGridX(beforeGrid);  // columhn number
   int Dy = Board_.ConvertGridY(targetGrid) -
-               Board_.ConvertGridY(beforeGrid);  // row number
+           Board_.ConvertGridY(beforeGrid);  // row number
   return Dx == 0 || Dy == 0 || (Dx == 0 && Dy == 0);
 }
 
@@ -226,8 +250,10 @@ bool GameLogic::BishopMove(Unit* Unit_, int targetGrid, int beforeGrid) {
   return Dx == Dy || Dx == -Dy || (Dx == 0 && Dy == 0);
 }
 bool GameLogic::KnightMove(Unit* Unit_, int targetGrid, int beforeGrid) {
-  int Dx = Board_.ConvertGridX(targetGrid) - Board_.ConvertGridX(beforeGrid);  // columhn number
-  int Dy = Board_.ConvertGridY(targetGrid) - Board_.ConvertGridY(beforeGrid);  // row number
+  int Dx = Board_.ConvertGridX(targetGrid) -
+           Board_.ConvertGridX(beforeGrid);  // columhn number
+  int Dy = Board_.ConvertGridY(targetGrid) -
+           Board_.ConvertGridY(beforeGrid);  // row number
   return Dx * Dx + Dy * Dy == 5 || (Dx == 0 && Dy == 0);
 }
 bool GameLogic::QueenMove(Unit* Unit_, int targetGrid, int beforeGrid) {
@@ -312,10 +338,11 @@ bool GameLogic::PathOccupied(
       break;
     case Unit::KNIGHT:
       for (auto* OtherUnit : WholePiece) {
-        if (targetGrid == OtherUnit->Getgrid() && OtherUnit->Color_ == Unit_->Color_) {
+        if (targetGrid == OtherUnit->Getgrid() &&
+            OtherUnit->Color_ == Unit_->Color_) {
           return true;
         }  // cant superimpose with other units
-        
+
         if (targetGrid == beforeGrid + 17 || targetGrid == beforeGrid + 15) {
           if (beforeGrid + 8 == OtherUnit->Getgrid()) {
             return true;
@@ -369,8 +396,8 @@ bool GameLogic::PathOccupied(
       for (auto* OtherUnit : WholePiece) {
         if (Delta == 0) return false;
 
-        if (targetGrid == OtherUnit->Getgrid() &&OtherUnit->Color_ ==
-            Unit_->Color_) {
+        if (targetGrid == OtherUnit->Getgrid() &&
+            OtherUnit->Color_ == Unit_->Color_) {
           return true;
         }  // cant superimpose with other units
 
